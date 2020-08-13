@@ -15,7 +15,6 @@ package kv
 
 import (
 	"context"
-	"fmt"
 	"math"
 	"math/rand"
 	"sync/atomic"
@@ -33,7 +32,6 @@ func RunInNewTxn(store Storage, retryable bool, f func(txn Transaction) error) e
 		originalTxnTS uint64
 		txn           Transaction
 	)
-	fmt.Println("RunInNewTxn invoke, ", txn)
 	for i := uint(0); i < maxRetryCnt; i++ {
 		txn, err = store.Begin()
 		if err != nil {

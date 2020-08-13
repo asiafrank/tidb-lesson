@@ -224,7 +224,6 @@ func (d *ddl) limitDDLJobs() {
 func (d *ddl) addBatchDDLJobs(tasks []*limitJobTask) {
 	startTime := time.Now()
 	err := kv.RunInNewTxn(d.store, true, func(txn kv.Transaction) error {
-		fmt.Println("addBatchDDLJobs invoke, ", txn)
 		t := meta.NewMeta(txn)
 		ids, err := t.GenGlobalIDs(len(tasks))
 		if err != nil {
@@ -266,7 +265,6 @@ func (d *ddl) getHistoryDDLJob(id int64) (*model.Job, error) {
 	var job *model.Job
 
 	err := kv.RunInNewTxn(d.store, false, func(txn kv.Transaction) error {
-		fmt.Println("getHistoryDDLJob invoke, ", txn)
 		t := meta.NewMeta(txn)
 		var err1 error
 		job, err1 = t.GetHistoryDDLJob(id)
@@ -433,7 +431,6 @@ func (w *worker) handleDDLJobQueue(d *ddlCtx) error {
 		)
 		waitTime := 2 * d.lease
 		err := kv.RunInNewTxn(d.store, false, func(txn kv.Transaction) error {
-			fmt.Println("handleDDLJobQueue invoke, ", txn)
 			// We are not owner, return and retry checking later.
 			if !d.isOwner() {
 				return nil

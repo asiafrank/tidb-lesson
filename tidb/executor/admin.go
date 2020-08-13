@@ -15,7 +15,6 @@ package executor
 
 import (
 	"context"
-	"fmt"
 	"math"
 
 	"github.com/pingcap/parser/ast"
@@ -295,7 +294,6 @@ func (e *RecoverIndexExec) backfillIndex(ctx context.Context) (int64, int64, err
 	)
 	for {
 		errInTxn := kv.RunInNewTxn(e.ctx.GetStore(), true, func(txn kv.Transaction) error {
-			fmt.Println("backfillIndex invoke, ", txn)
 			var err error
 			result, err = e.backfillIndexInTxn(ctx, txn, nextHandle)
 			return err
@@ -634,7 +632,6 @@ func (e *CleanupIndexExec) Next(ctx context.Context, req *chunk.Chunk) error {
 func (e *CleanupIndexExec) cleanTableIndex(ctx context.Context) error {
 	for {
 		errInTxn := kv.RunInNewTxn(e.ctx.GetStore(), true, func(txn kv.Transaction) error {
-			fmt.Println("cleanTableIndex invoke, ", txn)
 			err := e.fetchIndex(ctx, txn)
 			if err != nil {
 				return err
