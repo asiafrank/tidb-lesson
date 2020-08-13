@@ -37,8 +37,7 @@ wget https://cdn.jsdelivr.net/gh/rust-lang-nursery/rustup.rs/rustup-init.sh
 sh rustup-init.sh
 ```
 
-
-### 3. 配置cargo环境变量
+配置cargo环境变量：
 
 将环境变量配置在 `~/.bash_profile` 中即可：
 
@@ -46,11 +45,11 @@ sh rustup-init.sh
 export PATH="$HOME/.cargo/bin:$PATH"
 ```
 
-### 4. 安装 go 环境
+### 3. 安装 go 环境
 
 从 [官网](https://golang.org/dl/) 下载 macOS，安装包，执行即可。<br />
 
-### 5. 编译
+### 4. 编译
 
 > 基于 master 分支编译
 
@@ -62,7 +61,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 > 编译TiKV，如果使用 `make dev` ，会跑一遍单元测试，有的单元测试并不能正常通过。
 
-### 6. 启动
+### 5. 启动
 
 按要求启动 1 PD，1 TiDB，3 TiKV：
 
@@ -114,7 +113,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 - [pd-server](https://docs.pingcap.com/tidb/stable/command-line-flags-for-pd-configuration) 
 
 
-### 7. mysql客户端访问试试
+### 6. mysql客户端访问试试
 
 ```shell
 $ mysql -h 127.0.0.1 -P 4000 -u root
