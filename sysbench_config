@@ -1,0 +1,8 @@
+mysql-host=tidb-node01
+mysql-port=4000
+mysql-user=root
+mysql-db=sbtest
+time=600
+threads=16
+report-interval=10
+db-driver=mysql

@@ -1,4 +1,4 @@
-# lesson01 TiDB开发环境搭建
+# Lesson01 TiDB开发环境搭建
 要求：编译部署
 - 1 TiDB
 - 1 PD
